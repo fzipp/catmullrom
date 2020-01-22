@@ -35,7 +35,7 @@ func main() {
 		{X: 7, Y: 5.5},
 	}
 
-	curve := catmullrom.Chain(controlPoints, 100, 0.5)
+	curve := catmullrom.ChainComplete(controlPoints, 100, 0.5)
 
 	for _, point := range curve {
 		fmt.Printf("%v\t%v\n", point.X, point.Y)

@@ -8,6 +8,21 @@ import (
 	"math"
 )
 
+func ChainComplete(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
+	P := make([]Point, len(controlPoints)+2)
+	copy(P[1:], controlPoints)
+
+	cp0 := controlPoints[0]
+	cp1 := controlPoints[1]
+	P[0] = cp0.sub(cp1.sub(cp0))
+
+	cpy := controlPoints[len(controlPoints)-2]
+	cpz := controlPoints[len(controlPoints)-1]
+	P[len(P)-1] = cpz.add(cpz.sub(cpy))
+
+	return Chain(P, pointsPerSegment, alpha)
+}
+
 func Chain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
 	P := controlPoints
 	nSegments := len(P) - 3
