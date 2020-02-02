@@ -2,6 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// This little demo visualizes a Catmull-Rom spline chain for a series
+// of control points by creating a plot PNG image of the resulting curve.
 package main
 
 import (
