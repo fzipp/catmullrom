@@ -2,28 +2,44 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
+// Package catmullrom provides an implementation of the centripetal
+// Catmull-Rom spline. It calculates points of a 2D spline curve given a series
+// of control points.
 package catmullrom
 
 import (
 	"math"
 )
 
-func ChainComplete(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
+// SplineChain creates a spline curve through a series of control points by
+// chaining Catmull-Rom splines.
+//
+// Each curve segment for two control points will have pointsPerSegment
+// points, including the control points. Control points are not duplicated
+// at the seams of the segments.
+// Each control point is included in the result exactly as given.
+//
+// The alpha value ranges from 0 to 1. An alpha value of 0.5 results in a
+// centripetal spline, alpha=0 results in a uniform spline, and alpha=1 results
+// in a chordal spline.
+func SplineChain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
 	P := make([]Point, len(controlPoints)+2)
 	copy(P[1:], controlPoints)
 
 	cp0 := controlPoints[0]
 	cp1 := controlPoints[1]
+	// Additional extrapolated control point at the beginning
 	P[0] = cp0.sub(cp1.sub(cp0))
 
 	cpy := controlPoints[len(controlPoints)-2]
 	cpz := controlPoints[len(controlPoints)-1]
+	// Additional extrapolated control point at the end
 	P[len(P)-1] = cpz.add(cpz.sub(cpy))
 
-	return Chain(P, pointsPerSegment, alpha)
+	return chain(P, pointsPerSegment, alpha)
 }
 
-func Chain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
+func chain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
 	P := controlPoints
 	nSegments := len(P) - 3
 	curve := make([]Point, 0, nSegments*pointsPerSegment-(nSegments-1))
@@ -32,13 +48,21 @@ func Chain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
 		if i == 0 {
 			curve = append(curve, segment...)
 		} else {
-			// do not duplicate points at seams
+			// Do not duplicate points at seams.
 			curve = append(curve, segment[1:]...)
 		}
 	}
 	return curve
 }
 
+// Spline calculates the Catmull-Rom spline curve defined by the points p0, p1,
+// p2, p3. The resulting curve starts with p1 and ends with p2. Both these
+// points are included exactly as given. The total number of points for the
+// resulting curve is defined by nPoints.
+//
+// The alpha value ranges from 0 to 1. An alpha value of 0.5 results in a
+// centripetal spline, alpha=0 results in a uniform spline, and alpha=1 results
+// in a chordal spline.
 func Spline(p0, p1, p2, p3 Point, nPoints int, alpha float64) []Point {
 
 	tj := func(ti float64, pi, pj Point) float64 {
