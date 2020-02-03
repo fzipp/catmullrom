@@ -1,4 +1,4 @@
-module github.com/fzipp/catmullrom/demo
+module github.com/fzipp/catmullrom/cmd/spline
 
 go 1.14
 
