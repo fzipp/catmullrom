@@ -7,9 +7,7 @@
 // of control points.
 package catmullrom
 
-import (
-	"math"
-)
+import "math"
 
 // SplineChain creates a spline curve through a series of control points by
 // chaining Catmull-Rom splines.

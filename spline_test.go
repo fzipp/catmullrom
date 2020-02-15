@@ -4,9 +4,7 @@
 
 package catmullrom
 
-import (
-	"testing"
-)
+import "testing"
 
 type chainTest struct {
 	testName         string
