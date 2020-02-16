@@ -1,8 +1,7 @@
 # catmullrom
 
-Package catmullrom provides an implementation of the centripetal
-Catmull-Rom spline. It calculates points of a 2D spline curve given a series
-of control points.
+Package catmullrom implements the centripetal Catmull-Rom spline and
+calculates points of a 2D spline curve given a series of control points.
 
 Add it to a module as a dependency via:
 
@@ -83,3 +82,8 @@ func main() {
 	}
 }
 ```
+
+## License
+
+This project is free and open source software licensed under the
+[BSD 3-Clause License](LICENSE).

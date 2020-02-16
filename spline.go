@@ -2,9 +2,8 @@
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.
 
-// Package catmullrom provides an implementation of the centripetal
-// Catmull-Rom spline. It calculates points of a 2D spline curve given a series
-// of control points.
+// Package catmullrom implements the centripetal Catmull-Rom spline and
+// calculates points of a 2D spline curve given a series of control points.
 package catmullrom
 
 import "math"
