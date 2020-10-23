@@ -101,7 +101,7 @@ func TestPointDot(t *testing.T) {
 		{Point{X: 2, Y: -3}, Point{X: -4, Y: 2}, -14},
 		{Point{X: 4, Y: 8}, Point{X: 0.5, Y: 1.25}, 12},
 		{Point{X: 12.5, Y: 9.25}, Point{}, 0},
-		{Point{X: 1, Y: 0},  Point{X: 0, Y: 1}, 0},
+		{Point{X: 1, Y: 0}, Point{X: 0, Y: 1}, 0},
 		{Point{X: 4, Y: 5}, Point{X: 1, Y: 1}, 9},
 	}
 	for _, tt := range tests {
