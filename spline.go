@@ -61,7 +61,6 @@ func chain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
 // centripetal spline, alpha=0 results in a uniform spline, and alpha=1 results
 // in a chordal spline.
 func Spline(p0, p1, p2, p3 Point, nPoints int, alpha float64) []Point {
-
 	tj := func(ti float64, pi, pj Point) float64 {
 		return math.Pow(pj.dist(pi), alpha) + ti
 	}
