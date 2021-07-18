@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+
 	"github.com/fzipp/catmullrom"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
