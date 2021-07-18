@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-
 	"github.com/fzipp/catmullrom"
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
@@ -22,8 +21,7 @@ func (points xyPoints) XY(i int) (float64, float64) {
 }
 
 func savePlot(splinePoints, controlPoints xyPoints, file string) error {
-	// TODO: causes panic with gonum.org/v1/plot v0.9.0
-	//plot.DefaultFont = font.Font{Typeface: "Helvetica"}
+	plot.DefaultFont.Variant = "Sans"
 	p := plot.New()
 
 	p.Title.Text = "Catmull-Rom Spline"
