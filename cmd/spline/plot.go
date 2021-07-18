@@ -22,11 +22,9 @@ func (points xyPoints) XY(i int) (float64, float64) {
 }
 
 func savePlot(splinePoints, controlPoints xyPoints, file string) error {
-	plot.DefaultFont = "Helvetica"
-	p, err := plot.New()
-	if err != nil {
-		return fmt.Errorf("could not create plot: %w", err)
-	}
+	// TODO: causes panic with gonum.org/v1/plot v0.9.0
+	//plot.DefaultFont = font.Font{Typeface: "Helvetica"}
+	p := plot.New()
 
 	p.Title.Text = "Catmull-Rom Spline"
 	p.X.Label.Text = "X"
