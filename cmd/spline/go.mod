@@ -4,5 +4,5 @@ go 1.14
 
 require (
 	github.com/fzipp/catmullrom v0.1.0
-	gonum.org/v1/plot v0.8.1
+	gonum.org/v1/plot v0.9.0
 )
