@@ -1,6 +1,6 @@
 module github.com/fzipp/catmullrom/cmd/spline
 
-go 1.20
+go 1.22.0
 
 require (
 	github.com/fzipp/catmullrom v0.1.0
