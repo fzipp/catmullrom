@@ -40,7 +40,7 @@ func chain(controlPoints []Point, pointsPerSegment int, alpha float64) []Point {
 	P := controlPoints
 	nSegments := len(P) - 3
 	curve := make([]Point, 0, nSegments*pointsPerSegment-(nSegments-1))
-	for i := 0; i < nSegments; i++ {
+	for i := range nSegments {
 		segment := Spline(P[i], P[i+1], P[i+2], P[i+3], pointsPerSegment, alpha)
 		if i == 0 {
 			curve = append(curve, segment...)
