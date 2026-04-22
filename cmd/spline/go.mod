@@ -4,7 +4,7 @@ go 1.26.0
 
 require (
 	github.com/fzipp/catmullrom v0.1.0
-	gonum.org/v1/plot v0.16.0
+	gonum.org/v1/plot v0.17.0
 )
 
 require (
